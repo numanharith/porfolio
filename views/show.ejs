@@ -8,20 +8,24 @@
   <title>Document</title>
   <style>
     .card {
-      border-style: solid;
       margin: 0 auto;
     }
 
     img {
-      width: 100px;
-      height: 100px;
+      width: 300px;
+      height: 300px;
       display: block;
       margin: auto;
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between;
     }
   </style>
 </head>
 <body>
-  <div class="card" style="width: 18rem;">
+  <div class="card" style="width: 50rem;">
     <img src="<%= position.logo %>" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title" style="text-align: center;"><%= position.symbol %></h5>
@@ -32,10 +36,10 @@
       <li class="list-group-item">Fees: $<%= position.fees %></li>
       <li class="list-group-item">Market price: $<%= position.currentPrice %></li>
     </ul>
-    <div class="card-body">
-      <a href="/<%= position._id %>/edit" class="card-link">Edit</a>
+    <div class="card-body foot">
+      <a href="/<%= position._id %>/edit" class="btn btn-primary">Edit</a>
       <form action="/<%= position._id %>?_method=DELETE" method="POST">
-        <input type="submit" value="Delete">
+        <input type="submit" value="Delete" class="btn btn-primary">
       </form>
     </div>
   </div>
