@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include("./partials/head.ejs") %>
+  </head>
+  <body>
+    <div class="container">
+      <% if(currentUser) { %>
+        <h1>
+          Welcome <%= currentUser.username %>!
+        </h1 >
+        <h2>
+          <a class="waves-effect waves-light btn" href="/new">Add ticker</a>
+        </h2>
+        <form action="/sessions?_method=DELETE" method="POST">
+          <input type="submit" value="Logout" class="waves-effect waves-light btn"/>
+        </form>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Symbol</th>
+              <th scope="col">Shares</th>
+              <th scope="col">Cost</th>
+              <th scope="col">Fees</th>
+              <th scope="col">Current price</th>
+              <th scope="col">Market value</th>
+              <th scope="col">P&L</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (let i = 0; i < positions.length; i++) { %>
+              <tr>
+                <th scope="row"><%= i + 1 %></th>
+                <td><a href="/<%= positions[i]._id %>"><%= positions[i].symbol %></a></td>
+                <td><%= positions[i].shares %></td>
+                <td>$<%= positions[i].avgCost %></td>
+                <td>$<%= positions[i].fees %></td>
+                <td>$<%= positions[i].currentPrice %></td>
+                <td>$<%= positions[i].currentPrice * positions[i].shares%></td>
+                <td>$
+                  <%= 
+                    (positions[i].currentPrice * positions[i].shares) -
+                    (positions[i].avgCost * positions[i].shares + positions[i].fees)
+                  %>
+                </td>
+              </tr>
+            <% } %> 
+          </tbody>
+        </table>
+      <% } else { %>
+        <h2>Please </h2>
+        <a class="waves-effect waves-light btn" href="/users/new">Sign Up</a>
+        <h3>or</h3>
+        <a class="waves-effect waves-light btn" href="/sessions/new">Log In</a>
+      <% } %>
+    </div>
+</body>
+</html>

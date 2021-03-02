@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add ticker</title>
+  <%- include("./partials/head.ejs") %>
+</head>
+<style>
+  .container {
+    margin: 0 auto;
+  }
+</style>
+<body>
+  <div class="container">
+    <form action="/<%= position._id %>/edit?_method=PUT" method="POST" class="row g-3">
+      <div class="col-md-12">
+        <label for="symbol" class="form-label">Stock symbol:</label>
+        <input class="form-control" placeholder="Stock symbol" id="symbol" type="text" name="symbol" value="<%= position.symbol %>" required>
+      </div>
+      <div class="col-md-4">
+        <label for="shares" class="form-label">No. of shares:</label>
+        <input class="form-control" placeholder="No. of shares" id="shares" type="number" name="shares" min="0" step=".01" value="<%= position.shares %>" required>
+      </div>
+      <div class="col-md-4">
+        <label for="avgCost" class="form-label">Average cost: $</label>
+        <input class="form-control" placeholder="Average cost" id="avgCost" type="number" name="avgCost" min="0" step=".01" value="<%= position.avgCost %>" required>
+      </div>
+      <div class="col-md-4">
+        <label for="Fees" class="form-label">Fees: $</label>
+        <input class="form-control" placeholder="fees" id="fees" type="number" name="fees" min="0" step=".01" value="<%= position.fees %>" required>
+      </div>
+      <div class="col-md-12">
+        <label for="currentPrice" class="form-label">Current price: $</label>
+        <input class="form-control" placeholder="Current price" id="currentPrice" type="number" name="currentPrice" min="0" step=".01" value="<%= position.currentPrice %>" required>
+      </div>
+      <div class="col-md-12">
+        <label for="logo" class="form-label">Logo image URL:</label>
+        <input class="form-control" id="logo" type="text" name="logo" value="<%= position.logo %>" required>
+      </div>
+      <br>
+      <div class="col-md-12">
+        <button class="btn btn-primary" type="submit">Confirm edit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
