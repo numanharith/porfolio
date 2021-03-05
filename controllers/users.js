@@ -18,8 +18,7 @@ users.post("/", (req, res) => {
     if (err) {
       console.log(err);
     }
-    console.log(createdUser);
-    res.redirect("/");
+    res.redirect("/sessions/new");
   });
 });
 

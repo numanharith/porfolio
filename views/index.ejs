@@ -4,7 +4,7 @@
     <%- include("./partials/head.ejs") %>
     <style>
       .green {
-        color: darkgreen;
+        color: green;
       }
 
       .red {
@@ -14,7 +14,6 @@
   </head>
   <body>
     <div class="container">
-      <% if(currentUser) { %>
         <h1>
           <%= currentUser.username %>'s Portfolio
         </h1 >
@@ -81,12 +80,6 @@
           </tfoot>
         </table>
         <a class="btn btn-primary" href="/new">Add ticker</a>
-      <% } else { %>
-        <h2>Please </h2>
-        <a class="waves-effect waves-light btn" href="/users/new">Sign Up</a>
-        <h3>or</h3>
-        <a class="waves-effect waves-light btn" href="/sessions/new">Log In</a>
-      <% } %>
     </div>
 </body>
 </html>
