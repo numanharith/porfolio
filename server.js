@@ -6,8 +6,8 @@ const app = express();
 const session = require("express-session");
 
 // Configuration
-const PORT = process.env.PORT;
-const mongoURI = process.env.MONGODB_URI;
+const PORT = process.env.PORT || 3000;
+const mongoURI = process.env.MONGODB_URI || "mongodb://localhost:27017/portfolio";
 
 // Configure database & database connection
 mongoose.connect(mongoURI, { useNewUrlParser: true });
